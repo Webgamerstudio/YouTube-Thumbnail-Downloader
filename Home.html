@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Download YouTube video thumbnails in high quality. Free online YouTube thumbnail downloader with multiple resolution options.">
     <meta name="keywords" content="YouTube thumbnail downloader, video thumbnail, YouTube image download, thumbnail extractor, HD thumbnail">
     <meta name="author" content="Webgamer Studio">
@@ -35,9 +35,44 @@
             }
         }
     </script>
+    <style>
+        /* Ensure full-screen layout and remove scrollbars on mobile */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .main-container {
+            min-height: 100vh;
+            width: 100vw;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        /* Hide scrollbars but allow scrolling */
+        .main-container::-webkit-scrollbar {
+            display: none;
+        }
+        .main-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .tab-btn, .feature-card, .thumbnail-card {
+                transform: none !important;
+            }
+            .tab-btn:hover, .feature-card:hover, .thumbnail-card:hover {
+                transform: none !important;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-6xl h-screen overflow-y-auto shadow-2xl">
+<body class="bg-gray-100">
+    <div class="main-container shadow-2xl">
         <!-- Top Ad Container -->
         <div id="ad-top" class="hidden justify-center py-4 bg-gray-50">
             <script type="text/javascript">
@@ -53,54 +88,54 @@
         </div>
 
         <!-- Header -->
-        <header class="text-center py-8 px-4 border-b-2 border-gray-100">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 flex items-center justify-center gap-3 mb-3">
-                <span class="text-4xl">📺</span>
+        <header class="text-center py-6 px-4 border-b-2 border-gray-100">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 flex items-center justify-center gap-2 mb-3">
+                <span class="text-3xl sm:text-4xl">📺</span>
                 YouTube Thumbnail Downloader
             </h1>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Download high-quality YouTube video thumbnails instantly. Support for all resolutions including HD, Full HD, and 4K.
+            <p class="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
+                Download high-quality YouTube video thumbnails instantly. Supports all resolutions including HD, Full HD, and 4K.
             </p>
         </header>
 
         <!-- Navigation Tabs -->
-        <nav class="grid grid-cols-1 md:grid-cols-3 gap-4 px-6 py-6 max-w-3xl mx-auto">
-            <button onclick="showTab('downloader', this)" class="tab-btn active flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <span class="text-xl">📥</span>
+        <nav class="grid grid-cols-1 sm:grid-cols-3 gap-3 px-4 py-6 max-w-4xl mx-auto">
+            <button onclick="showTab('downloader', this)" class="tab-btn active flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base">
+                <span class="text-lg sm:text-xl">📥</span>
                 <span>Thumbnail Downloader</span>
             </button>
-            <button onclick="showTab('history', this)" class="tab-btn flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-600 rounded-xl font-semibold border-2 border-gray-200 hover:bg-gray-200 transition-all duration-300 hover:-translate-y-1">
-                <span class="text-xl">📊</span>
+            <button onclick="showTab('history', this)" class="tab-btn flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gray-100 text-gray-600 rounded-xl font-semibold border-2 border-gray-200 hover:bg-gray-200 transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base">
+                <span class="text-lg sm:text-xl">📊</span>
                 <span>Download History</span>
             </button>
-            <a href="#" class="flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-600 rounded-xl font-semibold border-2 border-gray-200 hover:bg-gray-200 transition-all duration-300 hover:-translate-y-1">
-                <span class="text-xl">🔧</span>
+            <a href="#" class="flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gray-100 text-gray-600 rounded-xl font-semibold border-2 border-gray-200 hover:bg-gray-200 transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base">
+                <span class="text-lg sm:text-xl">🔧</span>
                 <span>More Tools</span>
             </a>
         </nav>
 
         <!-- Downloader Tab -->
-        <main id="downloader" class="tab-content px-6 py-8">
-            <h2 class="text-2xl font-bold text-gray-800 text-center mb-6 flex items-center justify-center gap-2">
-                <span class="text-3xl">📥</span>
+        <main id="downloader" class="tab-content px-4 py-8 flex-1">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 text-center mb-6 flex items-center justify-center gap-2">
+                <span class="text-2xl sm:text-3xl">📥</span>
                 Download YouTube Thumbnails
             </h2>
 
             <div class="max-w-3xl mx-auto mb-8">
-                <div class="flex flex-col md:flex-row gap-3 mb-4">
+                <div class="flex flex-col sm:flex-row gap-3 mb-4">
                     <input 
                         type="url" 
                         id="youtubeUrl" 
-                        class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:ring-4 focus:ring-purple-100 transition-all"
+                        class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-purple-600 focus:ring-4 focus:ring-purple-100 transition-all text-sm sm:text-base"
                         placeholder="Paste YouTube video URL here (e.g., https://www.youtube.com/watch?v=VIDEO_ID)"
                         aria-label="YouTube video URL"
                     >
-                    <button onclick="extractThumbnails()" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <span class="text-xl">🔍</span>
+                    <button onclick="extractThumbnails()" class="px-4 py-3 sm:px-8 sm:py-3 bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 text-sm sm:text-base">
+                        <span class="text-lg sm:text-xl">🔍</span>
                         Get Thumbnails
                     </button>
                 </div>
-                <p class="text-sm text-gray-500 text-center">
+                <p class="text-xs sm:text-sm text-gray-500 text-center">
                     Supports YouTube video URLs, YouTube Shorts, and YouTube Music links
                 </p>
             </div>
@@ -120,73 +155,73 @@
             </div>
 
             <!-- Status Message -->
-            <div id="status" class="hidden max-w-3xl mx-auto mb-6 px-6 py-4 rounded-xl font-semibold"></div>
+            <div id="status" class="hidden max-w-3xl mx-auto mb-6 px-4 py-3 rounded-xl font-semibold text-sm sm:text-base"></div>
 
             <!-- Loading Spinner -->
             <div id="loading" class="hidden text-center py-8">
-                <div class="inline-block w-12 h-12 border-4 border-gray-200 border-t-purple-600 rounded-full animate-spin"></div>
-                <p class="mt-4 text-gray-600 font-medium">Extracting thumbnails...</p>
+                <div class="inline-block w-10 h-10 sm:w-12 sm:h-12 border-4 border-gray-200 border-t-purple-600 rounded-full animate-spin"></div>
+                <p class="mt-4 text-gray-600 font-medium text-sm sm:text-base">Extracting thumbnails...</p>
             </div>
 
             <!-- Video Info -->
-            <div id="videoInfo" class="hidden max-w-3xl mx-auto mb-8 bg-gray-50 p-6 rounded-xl border-2 border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <span class="text-xl">📹</span>
+            <div id="videoInfo" class="hidden max-w-3xl mx-auto mb-8 bg-gray-50 p-4 sm:p-6 rounded-xl border-2 border-gray-200">
+                <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="text-lg sm:text-xl">📹</span>
                     Video Information
                 </h3>
-                <div id="videoDetails" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <div id="videoDetails" class="grid grid-cols-1 gap-4 text-sm sm:text-base"></div>
             </div>
 
             <!-- Thumbnails Grid -->
-            <div id="thumbnailsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+            <div id="thumbnailsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8"></div>
 
             <!-- Features -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl text-center border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div class="text-4xl mb-3">🎯</div>
-                    <div class="font-bold text-gray-800 mb-2">High Quality</div>
-                    <div class="text-sm text-gray-600">Download thumbnails in HD, Full HD, and 4K resolution</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 px-4">
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-indigo-50 p-4 sm:p-6 rounded-xl text-center border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="text-3xl sm:text-4xl mb-3">🎯</div>
+                    <div class="font-bold text-gray-800 mb-2 text-sm sm:text-base">High Quality</div>
+                    <div class="text-xs sm:text-sm text-gray-600">Download thumbnails in HD, Full HD, and 4K resolution</div>
                 </div>
-                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl text-center border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div class="text-4xl mb-3">⚡</div>
-                    <div class="font-bold text-gray-800 mb-2">Instant Download</div>
-                    <div class="text-sm text-gray-600">Get thumbnails instantly without any processing delay</div>
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-indigo-50 p-4 sm:p-6 rounded-xl text-center border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="text-3xl sm:text-4xl mb-3">⚡</div>
+                    <div class="font-bold text-gray-800 mb-2 text-sm sm:text-base">Instant Download</div>
+                    <div class="text-xs sm:text-sm text-gray-600">Get thumbnails instantly without any processing delay</div>
                 </div>
-                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl text-center border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div class="text-4xl mb-3">🆓</div>
-                    <div class="font-bold text-gray-800 mb-2">100% Free</div>
-                    <div class="text-sm text-gray-600">No registration required, completely free to use</div>
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-indigo-50 p-4 sm:p-6 rounded-xl text-center border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="text-3xl sm:text-4xl mb-3">🆓</div>
+                    <div class="font-bold text-gray-800 mb-2 text-sm sm:text-base">100% Free</div>
+                    <div class="text-xs sm:text-sm text-gray-600">No registration required, completely free to use</div>
                 </div>
             </div>
         </main>
 
         <!-- History Tab -->
-        <main id="history" class="tab-content hidden px-6 py-8">
-            <h2 class="text-2xl font-bold text-gray-800 text-center mb-6 flex items-center justify-center gap-2">
-                <span class="text-3xl">📊</span>
+        <main id="history" class="tab-content hidden px-4 py-8 flex-1">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 text-center mb-6 flex items-center justify-center gap-2">
+                <span class="text-2xl sm:text-3xl">📊</span>
                 Download History
             </h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto">
-                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-6 rounded-xl text-center shadow-md">
-                    <div id="totalDownloads" class="text-4xl font-bold text-gray-800 mb-2">0</div>
-                    <div class="text-sm text-gray-600 font-medium">Total Downloads</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 max-w-3xl mx-auto">
+                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-4 sm:p-6 rounded-xl text-center shadow-md">
+                    <div id="totalDownloads" class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">0</div>
+                    <div class="text-xs sm:text-sm text-gray-600 font-medium">Total Downloads</div>
                 </div>
-                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-6 rounded-xl text-center shadow-md">
-                    <div id="todayCount" class="text-4xl font-bold text-gray-800 mb-2">0</div>
-                    <div class="text-sm text-gray-600 font-medium">Today</div>
+                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-4 sm:p-6 rounded-xl text-center shadow-md">
+                    <div id="todayCount" class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">0</div>
+                    <div class="text-xs sm:text-sm text-gray-600 font-medium">Today</div>
                 </div>
-                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-6 rounded-xl text-center shadow-md">
-                    <div id="uniqueVideos" class="text-4xl font-bold text-gray-800 mb-2">0</div>
-                    <div class="text-sm text-gray-600 font-medium">Unique Videos</div>
+                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-4 sm:p-6 rounded-xl text-center shadow-md">
+                    <div id="uniqueVideos" class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">0</div>
+                    <div class="text-xs sm:text-sm text-gray-600 font-medium">Unique Videos</div>
                 </div>
             </div>
 
             <div class="max-w-4xl mx-auto">
-                <h4 class="text-xl font-bold text-gray-800 mb-4">Recent Downloads</h4>
+                <h4 class="text-lg sm:text-xl font-bold text-gray-800 mb-4">Recent Downloads</h4>
                 <div id="historyList" class="space-y-4 mb-6"></div>
                 <div class="text-center">
-                    <button onclick="clearHistory()" class="px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <button onclick="clearHistory()" class="px-4 py-3 sm:px-8 sm:py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base">
                         Clear All History
                     </button>
                 </div>
@@ -209,7 +244,7 @@
 
         <!-- Footer -->
         <footer class="text-center py-6 px-4 text-gray-600 border-t border-gray-200">
-            <p>© 2024 Webgamer Studio - YouTube Thumbnail Downloader</p>
+            <p class="text-xs sm:text-sm">© 2024 Webgamer Studio - YouTube Thumbnail Downloader</p>
         </footer>
     </div>
 
@@ -276,7 +311,7 @@
         function showStatus(message, type) {
             const status = document.getElementById('status');
             status.textContent = message;
-            status.className = `max-w-3xl mx-auto mb-6 px-6 py-4 rounded-xl font-semibold ${
+            status.className = `max-w-3xl mx-auto mb-6 px-4 py-3 rounded-xl font-semibold ${
                 type === 'success' ? 'bg-green-100 text-green-700 border-2 border-green-300' :
                 type === 'error' ? 'bg-red-100 text-red-700 border-2 border-red-300' :
                 'bg-blue-100 text-blue-700 border-2 border-blue-300'
@@ -369,14 +404,14 @@
 
             thumbnails.forEach(thumbnail => {
                 const card = document.createElement('div');
-                card.className = 'bg-gray-50 rounded-2xl p-5 shadow-lg border-2 border-gray-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300';
+                card.className = 'thumbnail-card bg-gray-50 rounded-2xl p-4 sm:p-5 shadow-lg border-2 border-gray-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300';
                 
                 card.innerHTML = `
                     <img src="${thumbnail.url}" alt="${thumbnail.name}" class="w-full h-auto rounded-lg mb-4 shadow-md" loading="lazy">
                     <div class="text-center">
-                        <div class="text-lg font-bold text-gray-800 mb-1">${thumbnail.name}</div>
-                        <div class="text-sm text-gray-600 mb-4">${thumbnail.actualSize || thumbnail.size}</div>
-                        <button onclick="downloadThumbnail('${thumbnail.url}', '${thumbnail.name}', '${videoId}')" class="w-full px-4 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <div class="text-base sm:text-lg font-bold text-gray-800 mb-1">${thumbnail.name}</div>
+                        <div class="text-xs sm:text-sm text-gray-600 mb-4">${thumbnail.actualSize || thumbnail.size}</div>
+                        <button onclick="downloadThumbnail('${thumbnail.url}', '${thumbnail.name}', '${videoId}')" class="w-full px-4 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 text-sm sm:text-base">
                             <span>📥</span>
                             Download ${thumbnail.quality}
                         </button>
@@ -394,12 +429,12 @@
             const videoDetails = document.getElementById('videoDetails');
             videoDetails.innerHTML = `
                 <div class="flex justify-between py-2 border-b border-gray-300">
-                    <span class="font-semibold text-gray-700">Video ID</span>
-                    <span class="text-gray-900">${videoId}</span>
+                    <span class="font-semibold text-gray-700 text-sm sm:text-base">Video ID</span>
+                    <span class="text-gray-900 text-sm sm:text-base">${videoId}</span>
                 </div>
                 <div class="flex justify-between py-2">
-                    <span class="font-semibold text-gray-700">URL</span>
-                    <span class="text-gray-900 truncate ml-2">${originalUrl}</span>
+                    <span class="font-semibold text-gray-700 text-sm sm:text-base">URL</span>
+                    <span class="text-gray-900 truncate ml-2 text-sm sm:text-base">${originalUrl}</span>
                 </div>
             `;
             videoInfo.classList.remove('hidden');
@@ -474,7 +509,7 @@
             list.innerHTML = '';
 
             if (downloadHistory.length === 0) {
-                list.innerHTML = '<p class="text-center text-gray-500 py-8">No download history available.</p>';
+                list.innerHTML = '<p class="text-center text-gray-500 py-8 text-sm sm:text-base">No download history available.</p>';
                 return;
             }
 
@@ -484,10 +519,10 @@
                 div.innerHTML = `
                     <img src="${item.thumbnail}" alt="${item.title}" class="w-16 h-12 rounded-lg object-cover" loading="lazy">
                     <div class="flex-1">
-                        <div class="font-semibold text-gray-800 line-clamp-2">${item.title}</div>
+                        <div class="font-semibold text-gray-800 line-clamp-2 text-sm sm:text-base">${item.title}</div>
                         <div class="text-xs text-gray-500 truncate">${item.url}</div>
                     </div>
-                    <div class="text-right text-xs text-gray-500 min-w-24">
+                    <div class="text-right text-xs text-gray-500 min-w-20 sm:min-w-24">
                         ${new Date(item.timestamp).toLocaleString()}
                         ${item.downloadCount ? `<br>Downloads: ${item.downloadCount}` : ''}
                     </div>
